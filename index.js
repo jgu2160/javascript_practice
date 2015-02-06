@@ -1,9 +1,9 @@
 function createSentence(){
-  var chinese = "忍<span class="correct">耐是</span>一种美德。"
+  var chinese = ["忍","耐","是","一","种","美","德","。"]
   var pinyin = "Rěnnài shì yì zhǒng měidé."
   var tonelessPinyin = "rennai shi yizhong meide."
   var englishTrans = "Patience is a virtue."
-  document.getElementById("chinese").innerHTML = chinese;
+  document.getElementById("chinese").innerHTML = chinese.join("");
   document.getElementById("pinyin").innerHTML = pinyin;
 }
 
