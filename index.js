@@ -1,5 +1,5 @@
 function createSentence(){
-  var chinese = "忍耐是一种美德。"
+  var chinese = "忍<span class="correct">耐是</span>一种美德。"
   var pinyin = "Rěnnài shì yì zhǒng měidé."
   var tonelessPinyin = "rennai shi yizhong meide."
   var englishTrans = "Patience is a virtue."

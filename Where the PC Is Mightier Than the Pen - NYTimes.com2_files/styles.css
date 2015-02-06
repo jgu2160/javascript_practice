@@ -1,0 +1,68 @@
+/*$Id: styles.css 132392 2013-09-30 13:48:37Z madhuri_k $
+/css/0.1/screen/build/article/2.0/technology/styles.css 
+(c)2006 - 2010 The New York Times Company */
+
+@import url(/css/0.1/screen/build/article/2.0/styles.css?v=20111128);
+@import url(/css/0.1/screen/common/modules/headlines.css);
+@import url(/css/0.1/screen/common/modules/blogrunner.css);
+@import url(/css/0.1/screen/common/columnGroupSubColumns.css);
+@import url(/css/0.1/screen/section/technology/modules/cnetSimilarProducts.css);
+/* subNavigation imports would still be required on tech front/articles for backward compatibility. Please do not take if off */
+@import url(/css/0.1/screen/common/subNavigation.css);
+@import url(/css/0.1/screen/section/technology/personaltech/subNavigation.css);
+
+
+.rssPromo ul {
+  margin-left:0; 
+}
+
+.rssPromo li {
+  background:transparent url(/images/global/icons/feed_icon_12x12.gif) no-repeat scroll 0 0;
+  font-family:Arial,sans-serif;
+  font-weight:bold;
+  font-size:11px;
+  line-height:1.2em;
+  padding:0 0 2px 16px;
+}
+
+.rssPromo .rssPromoMini li {
+  background:transparent url(/images/global/icons/feed_icon_8x8.gif) no-repeat scroll 0 2px;
+  float:left;
+  font-size:10px;
+  font-weight:normal;
+  margin-top:3px;
+  padding:0 0 0 12px;
+  width:55px;
+}
+
+#linkedinModule  {
+  width: 100%;
+}
+
+#linkedinModule h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4em;
+}
+
+#related_times .moduleHeaderLg {
+  font-weight: bold;
+}
+
+.relatedStories .sectionHeader {
+  text-transform: uppercase;
+  font-size:1.1em;
+}
+
+.relatedStories .attribution {
+  color:#666666;
+  float:right;
+  font-family:arial,helvetica,sans-serif;
+  font-size:1em;
+  line-height:120%;
+  margin-top:10px;
+}
+
+/* This rule is added to overide article masthead style for technology subsection */
+#masthead .globalEditionPageHeader h2.pageHeaderWithLabel {
+  top: 3px;
+}

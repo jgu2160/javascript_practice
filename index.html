@@ -3,6 +3,7 @@
   <meta charset="utf-8">
   <title>Chinese Practice</title>
   <style type="text/css">
+    span { color: red;}
     .correct {
       color: green;
     }
@@ -43,16 +44,27 @@
       text-align: left;
       font-size: 40px;
       cursor:none;
+      z-index:0;
     }
-    selector { cursor: none; }
+    #block-of-white{
+      position: absolute;
+      top : -15px;
+      background: transparent;
+      width: 700px;
+      height: 80px;
+      z-index: 1;
+    }
     #chinese {
+      position:relative;
       font-size: 40px;
+      z-index: 2;
     }
     #pinyin {
       position:relative;
       top: 10px;
       font-family:arial,sans-serif;
-      font-size: 25px;
+      font-size: 24px;
+      z-index:2;
     }
   </style>
 </head>
@@ -61,7 +73,8 @@
     <p id='chinese'></p>
     <p>
     <label id='pinyin'></label><br />
-    <input type="text" id="userText" value="">
+    <input type="text" id="userText" value="" onkeypress="compareSentence()">
+    <div id="block-of-white"></div>
     </p>
   </form>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
