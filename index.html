@@ -10,7 +10,7 @@
       color: red;
     }
     .pending {
-      color: yellow;
+      color: #E6B800;
     }
     .word-container {
       height: 110px;
@@ -48,7 +48,7 @@
     #block-of-white{
       position: absolute;
       top : -15px;
-      background: white;
+      background: transparent;
       width: 700px;
       height: 80px;
       z-index: 1;
@@ -77,7 +77,7 @@
     <p id="chinese-sentence"></p>
       <p>
     <label id='pinyin-sentence'></label><br />
-    <input type="text" id="userText" autocomplete="off" onkeyup="compareSentence()">
+    <input type="text" id="userText" autocomplete="off" onkeydown="trackPending()" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
     <div><p id='english-sentence'></p></div>
     </p>

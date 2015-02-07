@@ -2,6 +2,8 @@ var chinese = ["忍","耐","是","一","种","美","德","。"]
 var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."]
 var englishTrans = "Patience is a virtue."
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
+var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1]
+var pending = 1;
 
 function createDefaultSentences(){
   this.defaultChineseSentence();
@@ -42,6 +44,13 @@ function inputIncorrect(i){
   self.colorCharByClass("#pinyin-sentence", i, "incorrect")
 }
 
+function trackPending(){
+  for (var i = 1; i <= charsPerPhrase[pending - 1]; i++){
+    self.colorCharByClass("#chinese-sentence", pending - 2 + i, "pending");
+    self.colorCharByClass("#pinyin-sentence", pending - 2 + i, "pending");
+  }
+}
+
 function compareSentence(){
   var user_input = document.getElementById("userText");
   user_chars = user_input.value;
@@ -49,10 +58,18 @@ function compareSentence(){
   for (var i = 0; i < user_chars.length; i++) {
     if (chinese[i] == user_chars[i]) {
       self.inputCorrect(i);
+      pending = i + 2;
+    } else if (user_chars.length == 0) {
+      pending = 1;
     } else {
       self.inputIncorrect(i);
+      pending = i
     }
   }
+}
+
+function keyLimit(){
+
 }
 
 //$("#input_field").keyup(function(){
