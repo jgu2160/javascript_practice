@@ -3,16 +3,13 @@ var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."];
 var englishTrans = "Patience is a virtue.";
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
 var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1];
-var charLimits = [2, 0, 1, 2, 0, 2 , 0, 1];
 var pending = 1;
-var charLimit = charLimits[0];
-document.getElementById("userText").maxLength = String(charLimit);
+$('#userText').attr('maxLength', chinese.length);
 
 function createDefaultSentences(){
   this.defaultChineseSentence();
   this.defaultPinyinSentence();
   this.defaultEnglishSentence();
-  $("#english-sentence").addClass("correct");
 }
 
 function defaultChineseSentence(){
@@ -56,7 +53,6 @@ function trackPending(){
 
 function compareSentence(){
   pending = 1;
-  charLimit = charLimits[0];
   var user_input = document.getElementById("userText");
   user_chars = user_input.value;
   self.createDefaultSentences();
@@ -64,18 +60,9 @@ function compareSentence(){
     if (chinese[i] == user_chars[i]) {
       self.inputCorrect(i);
       pending = i + 2;
-      charLimit += charLimits[i + 1];
-      document.getElementById("userText").maxLength = undefined;
-      $("#userText").removeAttr("style");
-      document.getElementById("userText").maxLength = String(charLimit);
     } else {
       self.inputIncorrect(i);
       pending = i;
-      charLimit -= charLimits[i + 1];
-      //document.getElementById("userText").removeAttribute('maxLength');
-      //document.getElementById("userText").maxLength = undefined;
-      $("#userText").removeAttr("style");
-      document.getElementById("userText").maxLength = String(charLimit);
     }
   }
 }
@@ -84,6 +71,22 @@ $("#userText").focus().on('blur', function() {
     $(this).focus();
 });
 
+$(document).on("click", function()
+  {
+    $("#userText").focus();
+  })
+
+window.onscroll = function () {
+        window.scrollTo(0,0);
+    }
+$('body').css('overflow-x', 'hidden');
+
 $(document).ready(function (){
   createDefaultSentences();
+  $('a.button-hide').on('click', function() {
+      $("#pinyin-sentence").toggle("show");
+      $("#userText").focus();
+  });
+  $("body").addClass("noscroll");
+  $("#userText").focus();
 })

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <title>Chinese Practice</title>
+  <title>PinyinType</title>
   <style type="text/css">
     .correct {
       color: green;
@@ -12,6 +12,30 @@
     .pending {
       color: #E6B800;
     }
+    #input-link{
+      color: blue;
+    }
+    /* unvisited link */
+    a:link {
+      color: black;
+      text-decoration: none;
+    }
+
+    /* visited link */
+    a:visited {
+      color: black;
+      text-decoration: none;
+    }
+
+    /* mouse over link */
+    a:hover {
+      color: red;
+    }
+
+    /* selected link */
+    a:active {
+      color: red;
+    }
     .word-container {
       height: 110px;
       text-align: center;
@@ -21,6 +45,9 @@
       bottom: 0;
       left: 30px;
       right: 0;
+    }
+    #hide-button{
+      text-align: right;
     }
     p {
     text-align:left;
@@ -34,6 +61,7 @@
     #userText {
       display: inline-block;
       position:relative;
+      width: 350px;
       top: -35px;
       bottom: 0;
       left: 0;
@@ -47,17 +75,17 @@
     }
     #block-of-white{
       position: absolute;
-      top : -15px;
-      background: transparent;
-      width: 700px;
-      height: 80px;
+      top : -20px;
+      background: white;
+      width: 375px;
+      height: 100px;
       z-index: 1;
     }
     #chinese-sentence {
       position:relative;
       font-size: 40px;
       font-family: "Microsoft YaHei",Gulim,"굴림",Helvetica,sans-serif;
-      z-index: 2;
+      z-index: 3;
     }
     #pinyin-sentence {
       position:relative;
@@ -73,13 +101,20 @@
   </style>
 </head>
 <body>
+  <div id="hide-button"><a href="javascript:;" class="button-hide">Toggle Pinyin</a></div>
   <form class='word-container'>
     <p id="chinese-sentence"></p>
       <p>
     <label id='pinyin-sentence'></label><br />
     <input type="text" id="userText" autocomplete="off" onkeydown="trackPending()" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
-    <div><p id='english-sentence'></p></div>
+    <div><p id='english-sentence'></p>
+      <p>
+      <div>
+      <a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">Pinyin input</a>
+      </div>
+      </p>
+    </div>
     </p>
   </form>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
