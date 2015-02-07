@@ -1,36 +1,58 @@
 var chinese = ["忍","耐","是","一","种","美","德","。"]
-var pinyin = "Rěnnài shì yì zhǒng měidé."
+var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."]
 var englishTrans = "Patience is a virtue."
+var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
 
-function createInitialSentence(){
+function createDefaultSentences(){
   this.defaultChineseSentence();
   this.defaultPinyinSentence();
   this.defaultEnglishSentence();
-  $("#english").addClass("incorrect");
-  $( "#chinese-sentence span:nth-child(4)" ).addClass("correct");
+  $("#english-sentence").addClass("correct");
 }
 
 function defaultChineseSentence(){
   document.getElementById("chinese-sentence").innerHTML = null;
   for (var i = 0, len = chinese.length; i < len; i++) {
-    $('<span id="' + i +'">' + chinese[i] + '</span>', {'class':'chinese-char'}).appendTo('#chinese-sentence');
+    $('<span>' + chinese[i] + '</span>').appendTo('#chinese-sentence');
   }
 }
 
 function defaultPinyinSentence(){
-  document.getElementById("pinyin").innerHTML = pinyin;
+  document.getElementById("pinyin-sentence").innerHTML = null;
+  for (var i = 0, len = pinyin.length; i < len; i++) {
+    $('<span>' + pinyin[i] + '</span>').appendTo('#pinyin-sentence');
+  }
 }
 
 function defaultEnglishSentence(){
-  document.getElementById("english").innerHTML = englishTrans;
+  document.getElementById("english-sentence").innerHTML = englishTrans;
 }
 
-function defaultTonelessPinyinSentence(){
-  var tonelessPinyin = "rennai shi yizhong meide."
+function colorCharByClass(parent_id, position, correctness){
+  $(parent_id + " span:nth-child(" + (position + 1) + ")" ).addClass(correctness);
+}
+
+function inputCorrect(i){
+  self.colorCharByClass("#chinese-sentence", i, "correct")
+  self.colorCharByClass("#pinyin-sentence", i, "correct")
+
+}
+function inputIncorrect(i){
+  self.colorCharByClass("#chinese-sentence", i, "incorrect")
+  self.colorCharByClass("#pinyin-sentence", i, "incorrect")
 }
 
 function compareSentence(){
-
+  var user_input = document.getElementById("userText");
+  user_chars = user_input.value;
+  self.createDefaultSentences();
+  for (var i = 0; i < user_chars.length; i++) {
+    if (chinese[i] == user_chars[i]) {
+      self.inputCorrect(i);
+    } else {
+      self.inputIncorrect(i);
+    }
+  }
 }
 
 //$("#input_field").keyup(function(){
@@ -39,5 +61,5 @@ function compareSentence(){
 //})
 
 $(document).ready(function (){
-  createInitialSentence();
+  createDefaultSentences();
 })

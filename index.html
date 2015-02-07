@@ -56,14 +56,19 @@
     #chinese-sentence {
       position:relative;
       font-size: 40px;
+      font-family: "Microsoft YaHei",Gulim,"굴림",Helvetica,sans-serif;
       z-index: 2;
     }
-    #pinyin {
+    #pinyin-sentence {
       position:relative;
       top: 10px;
       font-family:arial,sans-serif;
       font-size: 24px;
       z-index:2;
+    }
+    #english-sentence {
+      font-family: arial, sans-serif;
+      font-size: 24px;
     }
   </style>
 </head>
@@ -71,10 +76,10 @@
   <form class='word-container'>
     <p id="chinese-sentence"></p>
       <p>
-    <label id='pinyin'></label><br />
-    <input type="text" id="userText" value="" onkeyup="compareSentence()">
+    <label id='pinyin-sentence'></label><br />
+    <input type="text" id="userText" autocomplete="off" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
-    <div><p id='english'></p></div>
+    <div><p id='english-sentence'></p></div>
     </p>
   </form>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
