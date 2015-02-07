@@ -3,7 +3,6 @@
   <meta charset="utf-8">
   <title>Chinese Practice</title>
   <style type="text/css">
-    span { color: red;}
     .correct {
       color: green;
     }
@@ -49,12 +48,12 @@
     #block-of-white{
       position: absolute;
       top : -15px;
-      background: transparent;
+      background: white;
       width: 700px;
       height: 80px;
       z-index: 1;
     }
-    #chinese {
+    #chinese-sentence {
       position:relative;
       font-size: 40px;
       z-index: 2;
@@ -70,11 +69,12 @@
 </head>
 <body>
   <form class='word-container'>
-    <p id='chinese'></p>
-    <p>
+    <p id="chinese-sentence"></p>
+      <p>
     <label id='pinyin'></label><br />
-    <input type="text" id="userText" value="" onkeypress="compareSentence()">
+    <input type="text" id="userText" value="" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
+    <div><p id='english'></p></div>
     </p>
   </form>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
