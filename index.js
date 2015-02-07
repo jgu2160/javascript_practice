@@ -1,33 +1,40 @@
 var chinese = ["忍","耐","是","一","种","美","德","。"];
 var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."];
-var englishTrans = "Patience is a virtue.";
+var englishTrans = 'Patience is a virtue.';
+var instructions = '<a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">Pinyin input</a>';
+
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
 var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1];
 var pending = 1;
 $('#userText').attr('maxLength', chinese.length);
 
 function createDefaultSentences(){
-  this.defaultChineseSentence();
-  this.defaultPinyinSentence();
-  this.defaultEnglishSentence();
+  this.createChineseSentence();
+  this.createPinyinSentence();
+  this.createEnglishSentence();
+  this.createInstructions();
 }
 
-function defaultChineseSentence(){
+function createChineseSentence(){
   document.getElementById("chinese-sentence").innerHTML = null;
   for (var i = 0, len = chinese.length; i < len; i++) {
     $('<span>' + chinese[i] + '</span>').appendTo('#chinese-sentence');
   }
 }
 
-function defaultPinyinSentence(){
+function createPinyinSentence(){
   document.getElementById("pinyin-sentence").innerHTML = null;
   for (var i = 0, len = pinyin.length; i < len; i++) {
     $('<span>' + pinyin[i] + '</span>').appendTo('#pinyin-sentence');
   }
 }
 
-function defaultEnglishSentence(){
+function createEnglishSentence(){
   document.getElementById("english-sentence").innerHTML = englishTrans;
+}
+
+function createInstructions(){
+  document.getElementById("instructions").innerHTML = instructions;
 }
 
 function colorCharByClass(parent_id, position, correctness){
@@ -83,7 +90,7 @@ $('body').css('overflow-x', 'hidden');
 
 $(document).ready(function (){
   createDefaultSentences();
-  $('a.button-hide').on('click', function() {
+  $('a.button-toggle').on('click', function() {
       $("#pinyin-sentence").toggle("show");
       $("#userText").focus();
   });

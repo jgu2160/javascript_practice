@@ -36,6 +36,9 @@
     a:active {
       color: red;
     }
+    div {
+      margin: 0;
+    }
     .word-container {
       height: 110px;
       text-align: center;
@@ -46,7 +49,7 @@
       left: 30px;
       right: 0;
     }
-    #hide-button{
+    #toggle-button{
       text-align: right;
     }
     p {
@@ -78,7 +81,7 @@
       top : -20px;
       background: white;
       width: 375px;
-      height: 100px;
+      height: 75px;
       z-index: 1;
     }
     #chinese-sentence {
@@ -94,27 +97,22 @@
       font-size: 24px;
       z-index:2;
     }
-    #english-sentence {
+    #english-sentence, #instructions {
       font-family: arial, sans-serif;
       font-size: 24px;
     }
   </style>
 </head>
 <body>
-  <div id="hide-button"><a href="javascript:;" class="button-hide">Toggle Pinyin</a></div>
+  <div id="toggle-button"><a href="javascript:;" class="button-toggle">Toggle Pinyin</a></div>
   <form class='word-container'>
     <p id="chinese-sentence"></p>
       <p>
     <label id='pinyin-sentence'></label><br />
     <input type="text" id="userText" autocomplete="off" onkeydown="trackPending()" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
-    <div><p id='english-sentence'></p>
-      <p>
-      <div>
-      <a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">Pinyin input</a>
-      </div>
-      </p>
-    </div>
+    <div><p id='english-sentence'></p></div>
+    <div><p id='instructions'></p></div>
     </p>
   </form>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
