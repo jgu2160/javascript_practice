@@ -1,9 +1,12 @@
-var chinese = ["忍","耐","是","一","种","美","德","。"]
-var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."]
-var englishTrans = "Patience is a virtue."
+var chinese = ["忍","耐","是","一","种","美","德","。"];
+var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."];
+var englishTrans = "Patience is a virtue.";
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
-var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1]
+var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1];
+var charLimits = [2, 0, 1, 2, 0, 2 , 0, 1];
 var pending = 1;
+var charLimit = charLimits[0];
+document.getElementById("userText").maxLength = String(charLimit);
 
 function createDefaultSentences(){
   this.defaultChineseSentence();
@@ -35,13 +38,13 @@ function colorCharByClass(parent_id, position, correctness){
 }
 
 function inputCorrect(i){
-  self.colorCharByClass("#chinese-sentence", i, "correct")
-  self.colorCharByClass("#pinyin-sentence", i, "correct")
+  self.colorCharByClass("#chinese-sentence", i, "correct");
+  self.colorCharByClass("#pinyin-sentence", i, "correct");
 
 }
 function inputIncorrect(i){
-  self.colorCharByClass("#chinese-sentence", i, "incorrect")
-  self.colorCharByClass("#pinyin-sentence", i, "incorrect")
+  self.colorCharByClass("#chinese-sentence", i, "incorrect");
+  self.colorCharByClass("#pinyin-sentence", i, "incorrect");
 }
 
 function trackPending(){
@@ -52,6 +55,8 @@ function trackPending(){
 }
 
 function compareSentence(){
+  pending = 1;
+  charLimit = charLimits[0];
   var user_input = document.getElementById("userText");
   user_chars = user_input.value;
   self.createDefaultSentences();
@@ -59,23 +64,25 @@ function compareSentence(){
     if (chinese[i] == user_chars[i]) {
       self.inputCorrect(i);
       pending = i + 2;
-    } else if (user_chars.length == 0) {
-      pending = 1;
+      charLimit += charLimits[i + 1];
+      document.getElementById("userText").maxLength = undefined;
+      $("#userText").removeAttr("style");
+      document.getElementById("userText").maxLength = String(charLimit);
     } else {
       self.inputIncorrect(i);
-      pending = i
+      pending = i;
+      charLimit -= charLimits[i + 1];
+      //document.getElementById("userText").removeAttribute('maxLength');
+      //document.getElementById("userText").maxLength = undefined;
+      $("#userText").removeAttr("style");
+      document.getElementById("userText").maxLength = String(charLimit);
     }
   }
 }
 
-function keyLimit(){
-
-}
-
-//$("#input_field").keyup(function(){
-  //if($(this).val().length == 1)
-    //$('#form :submit').click();
-//})
+$("#userText").focus().on('blur', function() {
+    $(this).focus();
+});
 
 $(document).ready(function (){
   createDefaultSentences();
