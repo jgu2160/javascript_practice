@@ -1,7 +1,7 @@
 var chinese = ["忍","耐","是","一","种","美","德","。"];
 var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."];
 var englishTrans = 'Patience is a virtue.';
-//var instructions = '<a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">Pinyin input</a>';
+var instructions = 'Welcome to the PinyinType prototype. To use this app, you must enable <a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">Pinyin keyboard input</a> on your operating system. After this, click anywhere in the browser window and start typing. You can toggle the pinyin on and off, off if you really want a challenge!';
 
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
 var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1];
@@ -12,7 +12,7 @@ function createDefaultSentences(){
   this.createChineseSentence();
   this.createPinyinSentence();
   this.createEnglishSentence();
-  //this.createInstructions();
+  this.createInstructions();
 }
 
 function createChineseSentence(){
