@@ -7,7 +7,7 @@
       color: #19A347;
     }
     .incorrect {
-      color: #D11919;
+      color: #FF4747;
     }
     .pending {
       color: #E6B800;
@@ -29,31 +29,36 @@
 
     /* mouse over link */
     a:hover {
-      color: #D11919;
+      color: #FF4747;
     }
 
     /* selected link */
     a:active {
-      color: #D11919;
+      color: #FF4747;
     }
     .word-container {
       height: 110px;
-      text-align: center;
+      text-align: left;
       line-height: 0;
       position: relative;
+      margin: 20px;
       top: 50px;
       bottom: 0;
-      left: 30px;
+      left: 15px;
       right: 0;
     }
     #toggle-button{
       text-align: right;
     }
+    #definition{
+      position:relative;
+      text-align: bottom;
+    }
     p {
     text-align:left;
     display: table-row;
     }
-    form  { width: 800px; display: table; }
+    form  { width: 400px; display: table;}
     label { display: inline-block; }
     #cursor {
       opacity: 0;
@@ -62,11 +67,11 @@
       display: inline-block;
       position:relative;
       width: 350px;
-      top: -35px;
+      top: -30px;
       bottom: 0;
       left: 0;
       right: 0;
-      background: transparent;
+      background: white;
       border: none;
       text-align: left;
       font-size: 40px;
@@ -78,40 +83,53 @@
       top : -20px;
       background: white;
       width: 375px;
-      height: 75px;
+      height: 60px;
       z-index: 1;
+    }
+    .chinese{
+      font-size: 40px;
+      font-family: "Microsoft YaHei",Gulim,"굴림",Helvetica,sans-serif;
     }
     #chinese-sentence {
       position:relative;
-      font-size: 40px;
-      font-family: "Microsoft YaHei",Gulim,"굴림",Helvetica,sans-serif;
       z-index: 3;
     }
     #pinyin-sentence {
       position:relative;
-      top: 10px;
-      font-family:arial,sans-serif;
-      font-size: 24px;
+      top: 15px;
       z-index:2;
     }
-    #english-sentence, #instructions {
+    #instructions{
+      position: absolute;
+      margin-top:15px;
+      bottom: 0;
+    }
+    .english{
       font-family: arial, sans-serif;
       font-size: 24px;
+    }
+    .smaller-english{
+      font-family: arial, sans-serif;
+      font-size: 16px;
+    }
+    #english-sentence{
+      margin-top:15px;
     }
   </style>
 </head>
 <body>
-  <div id="toggle-button"><a href="javascript:;" class="button-toggle">Toggle Pinyin</a></div>
-  <form class='word-container'>
-    <p id="chinese-sentence"></p>
+  <div id="toggle-button"><a href="javascript:;" class="button-toggle smaller-english">Toggle Pinyin</a></div>
+  <div id="definition"><p class="chinese">是</p><p class="smaller-english">English: "is"</p></div>
+  <div class='word-container'><form>
+    <p class="chinese" id="chinese-sentence"></p>
       <p>
-    <label id='pinyin-sentence'></label><br />
+      <label class="english" id='pinyin-sentence'></label><br />
     <input type="text" id="userText" autocomplete="off" onkeydown="trackPending()" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
-    <div><p id='english-sentence'></p></div>
-    <div><p id='instructions'></p></div>
+    <div class="english" id='english-sentence'><p ></p></div>
     </p>
-  </form>
+  </form></div>
+  <div id="instructions" class="smaller-english"><p></p></div>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="index.js"></script>
 </body>
