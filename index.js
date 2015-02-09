@@ -82,6 +82,10 @@ $(document).on("click", function()
   {
     $("#userText").focus();
   })
+
+window.onscroll = function () {
+        window.scrollTo(0,0);
+    }
 $('body').css('overflow-x', 'hidden');
 
 $(document).ready(function (){
@@ -90,5 +94,6 @@ $(document).ready(function (){
       $("#pinyin-sentence").toggle("show");
       $("#userText").focus();
   });
+  $("body").addClass("noscroll");
   $("#userText").focus();
 })
