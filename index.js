@@ -12,7 +12,7 @@ function createDefaultSentences(){
   this.createChineseSentence();
   this.createPinyinSentence();
   this.createEnglishSentence();
-  this.createInstructions();
+  // this.createInstructions();
 }
 
 function createChineseSentence(){
@@ -83,15 +83,22 @@ $(document).on("click", function()
     $("#userText").focus();
   })
 
+function handleClick(cb) {
+  $("#pinyin-sentence").toggle("show",0);
+}
+
 window.onscroll = function () {
         window.scrollTo(0,0);
     }
 $('body').css('overflow-x', 'hidden');
 
+
+
 $(document).ready(function (){
   createDefaultSentences();
+  bootbox.alert(instructions)
   $('a.button-toggle').on('click', function() {
-      $("#pinyin-sentence").toggle("show");
+      $("#pinyin-sentence").toggle("show",0);
       $("#userText").focus();
   });
   $("body").addClass("noscroll");

@@ -1,128 +1,20 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/normalize.css">
+  
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/css/normalize.css">
+  <link rel="stylesheet" href="public/css/main.css">
   <title>PinyinType</title>
-  <style type="text/css">
-    .correct {
-      color: #19A347;
-    }
-    .incorrect {
-      color: #FF4747;
-    }
-    .pending {
-      color: #FFD239;
-    }
-    #input-link{
-      color: blue;
-    }
-    /* unvisited link */
-    a:link {
-      color: black;
-      text-decoration: none;
-    }
-
-    /* visited link */
-    a:visited {
-      color: black;
-      text-decoration: none;
-    }
-
-    /* mouse over link */
-    a:hover {
-      color: #FF4747;
-    }
-
-    /* selected link */
-    a:active {
-      color: #FF4747;
-    }
-    .word-container {
-      height: 110px;
-      text-align: left;
-      line-height: 0;
-      position: relative;
-      margin: 20px;
-      top: 50px;
-      bottom: 0;
-      left: 15px;
-      right: 0;
-    }
-    #toggle-button{
-      text-align: right;
-    }
-    #definition{
-      position:relative;
-      text-align: bottom;
-    }
-    p {
-    text-align:left;
-    display: table-row;
-    }
-    form  { width: 400px; display: table;}
-    label { display: inline-block; }
-    #cursor {
-      opacity: 0;
-    }
-    #userText {
-      display: inline-block;
-      position:relative;
-      width: 350px;
-      top: -30px;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      border: none;
-      text-align: left;
-      font-size: 40px;
-      cursor:none;
-      z-index:0;
-    }
-    #block-of-white{
-      position: absolute;
-      top : -20px;
-      background: white;
-      width: 375px;
-      height: 60px;
-      z-index: 1;
-    }
-    .chinese{
-      font-size: 40px;
-      font-family: "Microsoft YaHei",Gulim,"굴림",Helvetica,sans-serif;
-    }
-    #chinese-sentence {
-      position:relative;
-      z-index: 3;
-    }
-    #pinyin-sentence {
-      position:relative;
-      top: 15px;
-      z-index:2;
-    }
-    #instructions{
-      position: absolute;
-      margin-top:15px;
-      bottom: 0;
-      margin-right: 5px;
-      text-justify: auto;
-    }
-    .english{
-      font-family: arial, sans-serif;
-      font-size: 24px;
-    }
-    .smaller-english{
-      font-family: arial, sans-serif;
-      font-size: 16px;
-    }
-    #english-sentence{
-      margin-top:15px;
-    }
-  </style>
 </head>
 <body>
-  <div id="toggle-button"><a href="javascript:;" class="button-toggle smaller-english">Toggle Pinyin</a></div>
+<!--   <div id="toggle-button"><a href="javascript:;" class="button-toggle smaller-english">Toggle Pinyin</a></div>
+  <div> -->
+
+<div class="pull-right" id="toggle-div">
+  <input type="checkbox" onclick='handleClick(this);' id="toggle-button" name="toggle-button"/>
+  <label for="toggle-button"><span style="color:white">l</span></label>
+</div>
   <!--<div id="definition"><p class="chinese">是</p><p class="smaller-english">English: "is"</p></div>-->
   <div class='word-container'><form>
     <p class="chinese" id="chinese-sentence"></p>
@@ -135,5 +27,7 @@
   </form></div>
   <div id="instructions" class="smaller-english"><p></p></div>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="public/js/bootstrap.min.js"></script>
+  <script src="public/js/bootbox.min.js"></script>
   <script src="index.js"></script>
 </body>
