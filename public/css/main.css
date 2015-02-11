@@ -10,6 +10,30 @@
 #input-link{
   color: blue;
 }
+
+.btn-primary {
+  background-color: #19A347;
+  border-bottom-color: #19A347;
+  border-color: #19A347;
+}
+
+.btn-primary:focus {
+  background-color: #19A347;
+  border-color: #19A347;
+}
+.btn-primary:hover {
+  background-color: #19A347;
+  border-color: #19A347;
+}
+
+.close:hover {
+  color: #FF4747;
+}
+
+.modal-dialog {
+  margin: 60px;
+}
+
 label {
 font-weight: normal !important;
 }
@@ -53,7 +77,6 @@ a:active {
 }
 
 #toggle-button:empty{
-  /*text-align: right;*/
   opacity:0;
   }
 
@@ -72,7 +95,7 @@ a:active {
   user-select: none;
 }
 
-#toggle-button:empty ~ label:before, 
+#toggle-button:empty ~ label:before,
 #toggle-button:empty ~ label:after
 {
   position: absolute;
