@@ -1,7 +1,7 @@
 var chinese = ["忍","耐","是","一","种","美","德","。"];
 var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."];
 var englishTrans = 'Patience is a virtue.';
-var instructions = 'Welcome to the PinyinType prototype. To use this app, you must enable <a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">pinyin keyboard input</a> on your operating system. After this, click anywhere in the browser window and start typing. You can toggle the pinyin on and off, off if you really want a challenge!';
+var instructions = 'Welcome to the <strong>Pinyin</strong><strong class="incorrect">Type</strong> prototype. To use this app, you must enable <a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">pinyin keyboard input</a> on your operating system and know the basics of its usage. After this, click on the Chinese characters and start typing. You can toggle the pinyin <strong class="correct">on</strong> and <strong class="incorrect">off</strong>, off if you really want a challenge! <strong class="incorrect">Use Firefox for best results.</strong>';
 
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
 var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1];
@@ -78,10 +78,18 @@ $("#userText").focus().on('blur', function() {
     $(this).focus();
 });
 
-$(document).on("click", function()
+$("#word-container").on("click", function()
   {
     $("#userText").focus();
+    self.trackPending();
   })
+
+$(document).click(function(e){
+    if(e.target.id == "cursor-sensor")
+      { self.trackPending(); }
+    else
+      { self.compareSentence(); }
+});
 
 function handleClick(cb) {
   $("#pinyin-sentence").toggle("show",0);
@@ -99,8 +107,7 @@ $(document).ready(function (){
   bootbox.alert(instructions)
   $('a.button-toggle').on('click', function() {
       $("#pinyin-sentence").toggle("show",0);
-      $("#userText").focus();
+      //$("#userText").focus();
   });
   $("body").addClass("noscroll");
-  $("#userText").focus();
 })

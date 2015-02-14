@@ -8,22 +8,21 @@
   <title>PinyinType</title>
 </head>
 <body>
-
-<div class="pull-right" id="toggle-div">
-  <input type="checkbox" onclick='handleClick(this);' id="toggle-button" name="toggle-button"/>
-  <label for="toggle-button"><span style="color:white">l</span></label>
-</div>
+  <div class="pull-right" id="toggle-div">
+    <input type="checkbox" class="pull-left" onclick='handleClick(this);' id="toggle-button" name="toggle-button"/>
+    <label for="toggle-button"><span style="color:white">l</span></label>
+  </div>
   <!--<div id="definition"><p class="chinese">是</p><p class="smaller-english">English: "is"</p></div>-->
-  <div class='word-container'><form>
-    <p class="chinese" id="chinese-sentence"></p>
+  <div id='word-container'><form>
+      <div style="background-color:green" class="chinese" id="chinese-sentence"><p></p></div>
       <p>
-      <label class="english" id='pinyin-sentence'></label><br />
+      <label style="background-color:blue" class="english" id='pinyin-sentence'></label><br />
     <input type="text" id="userText" autocomplete="off" onkeydown="trackPending()" onkeyup="compareSentence()">
     <div id="block-of-white"></div>
+    <div id="cursor-sensor"></div>
     <div class="english" id='english-sentence'><p ></p></div>
     </p>
   </form></div>
-  <div id="instructions" class="smaller-english"><p></p></div>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="public/js/bootstrap.min.js"></script>
   <script src="public/js/bootbox.min.js"></script>
