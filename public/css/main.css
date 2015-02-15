@@ -11,6 +11,10 @@
   color: blue;
 }
 
+#title{
+  font-size: 30px;
+}
+
 .container-part {
   background-color:red;
 }
@@ -69,15 +73,16 @@ a:active {
   line-height: 0;
   position: relative;
   margin: 20px;
-  top: 80px;
+  top: 50px;
   bottom: 0;
-  left: 15px;
+  left: 0px;
   right: 0;
   z-index: 3;
 }
 
 #toggle-button {
   font-color: white;
+  font-size: 30px;
 }
 
 #toggle-button:empty{
@@ -137,7 +142,8 @@ a:active {
   margin-left: 2em;
 }
 
-#definition{
+#definition
+{
   position:relative;
   text-align: bottom;
 }
@@ -197,6 +203,7 @@ label { display: inline-block; }
   height: 70px;
   z-index:5;
 }
+
 #instructions{
   position: absolute;
   margin-top:15px;
