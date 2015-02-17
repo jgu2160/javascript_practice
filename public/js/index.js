@@ -8,9 +8,9 @@ var pending = 1;
 $('#userText').attr('maxLength', chinese.length);
 
 function createDefaultSentences(){
-  this.createChineseSentence();
-  this.createPinyinSentence();
-  this.createEnglishSentence();
+  createChineseSentence();
+  createPinyinSentence();
+  createEnglishSentence();
 }
 
 function createChineseSentence(){
@@ -39,50 +39,54 @@ function colorCharByClass(parent_id, position, correctness){
   $(parent_id + " span:nth-child(" + (position + 1) + ")" ).addClass(correctness);
 }
 
-function inputCorrect(i){
-  self.colorCharByClass("#chinese-sentence", i, "correct");
-  self.colorCharByClass("#pinyin-sentence", i, "correct");
+function colorCorrect(i){
+  colorCharByClass("#chinese-sentence", i, "correct");
+  colorCharByClass("#pinyin-sentence", i, "correct");
 
 }
-function inputIncorrect(i){
-  self.colorCharByClass("#chinese-sentence", i, "incorrect");
-  self.colorCharByClass("#pinyin-sentence", i, "incorrect");
+function colorIncorrect(i){
+  colorCharByClass("#chinese-sentence", i, "incorrect");
+  colorCharByClass("#pinyin-sentence", i, "incorrect");
 }
 
-function trackPending(){
+function colorPending(){
   for (var i = 1; i <= charsPerPhrase[pending - 1]; i++){
-    self.colorCharByClass("#chinese-sentence", pending - 2 + i, "pending");
-    self.colorCharByClass("#pinyin-sentence", pending - 2 + i, "pending");
+    colorCharByClass("#chinese-sentence", pending - 2 + i, "pending");
+    colorCharByClass("#pinyin-sentence", pending - 2 + i, "pending");
   }
 }
 
-function compareSentence(){
+function colorSentence(){
   pending = 1;
   var user_input = document.getElementById("userText");
   user_chars = user_input.value;
-  self.createDefaultSentences();
+  createDefaultSentences();
   for (var i = 0; i < user_chars.length; i++) {
     if (chinese[i] == user_chars[i]) {
-      self.inputCorrect(i);
+      colorCorrect(i);
       pending = i + 2;
     } else {
-      self.inputIncorrect(i);
+      colorIncorrect(i);
       pending = i + 1;
     }
   }
 }
 
-$("#word-container").on("click", function()
-  {
-    $("#userText").focus();
-    self.trackPending();
-  })
+$("#userText").keydown(colorPending);
+$("#userText").keyup(colorSentence);
+
+$("#word-container").click(function(){
+  $("#userText").focus();
+  colorPending();
+});
 
 $(document).click(function(e){
-    if(e.target.id == "cursor-sensor")
-      { self.trackPending(); }
-    else
-      { self.compareSentence(); }
+  if(e.target.id == "cursor-sensor"){
+    colorPending();
+  }
+  else{
+    colorSentence();
+  }
 });
 
 function handleClick(cb) {
@@ -90,16 +94,16 @@ function handleClick(cb) {
 }
 
 window.onscroll = function () {
-        window.scrollTo(0,0);
-    }
+  window.scrollTo(0,0);
+}
+
 $('body').css('overflow-x', 'hidden');
 
 $(document).ready(function (){
   createDefaultSentences();
   bootbox.alert(instructions)
-  $('a.button-toggle').on('click', function() {
-      $("#pinyin-sentence").toggle("show",0);
-      //$("#userText").focus();
+  $('a.button-toggle').click(function() {
+    $("#pinyin-sentence").toggle("show",0);
   });
   $("body").addClass("noscroll");
 })
