@@ -2,7 +2,6 @@ var chinese = ["忍","耐","是","一","种","美","德","。"];
 var pinyin = ["Rěn", "nài ", "shì ", "yì", "zhǒng ", "měi", "dé", "."];
 var englishTrans = 'Patience is a virtue.';
 var instructions = 'Welcome to the <strong>Pinyin</strong><strong class="incorrect">Type</strong> prototype. To use this app, you must enable <a id="input-link" href="https://chinese.yabla.com/type-chinese-characters.php?" target="_blank">pinyin keyboard input</a> on your operating system and know the basics of its usage. After this, click on the Chinese characters and start typing. You can toggle the pinyin <strong class="correct">on</strong> and <strong class="incorrect">off</strong>, off if you really want a challenge! <strong class="incorrect">Use Firefox for best results.</strong>';
-
 var tonelessPinyin = ["rennai", "shi", "yizhong", "meide"];
 var charsPerPhrase = [2, 1, 1, 2, 1, 2, 1, 1];
 var pending = 1;
@@ -12,7 +11,6 @@ function createDefaultSentences(){
   this.createChineseSentence();
   this.createPinyinSentence();
   this.createEnglishSentence();
-  // this.createInstructions();
 }
 
 function createChineseSentence(){
@@ -74,10 +72,6 @@ function compareSentence(){
   }
 }
 
-$("#userText").focus().on('blur', function() {
-    $(this).focus();
-});
-
 $("#word-container").on("click", function()
   {
     $("#userText").focus();
@@ -99,8 +93,6 @@ window.onscroll = function () {
         window.scrollTo(0,0);
     }
 $('body').css('overflow-x', 'hidden');
-
-
 
 $(document).ready(function (){
   createDefaultSentences();
